@@ -1,0 +1,25 @@
+{
+  "name": "react-workshop",
+  "version": "0.0.1",
+  "description": "React Workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "reveal-md slides.md --theme thoughtworks --title 'React Workshop'",
+    "build": "mkdir -p dist && cp -r {images,theme} dist && cp -r node_modules/reveal.js/{css,js,lib,plugin} dist && reveal-md slides.md --theme thoughtworks --title 'React Workshop' --static > dist/index.html",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roberto/react-workshop.git"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/roberto/react-workshop/issues"
+  },
+  "homepage": "https://github.com/roberto/react-workshop#readme",
+  "dependencies": {
+    "gh-pages": "^1.0.0",
+    "reveal-md": "^0.0.31"
+  }
+}
