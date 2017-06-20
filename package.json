@@ -4,8 +4,8 @@
   "description": "React Workshop",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bs serve",
-    "build": "bs export --no-inline --output dist",
+    "start": "bs serve slides",
+    "build": "bs export slides/*.md --no-inline --output dist",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {

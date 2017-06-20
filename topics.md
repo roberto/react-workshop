@@ -11,12 +11,12 @@
     * Server-Side Rendering
   * Components
     * var, func
-    * Componsing them
+    * Composing them
     * Rendering it
     * Event
   * State Management
     * State
-    * Lifecycle
+    * Life cycle
 * Redux
 * Testing it
 
