@@ -7,7 +7,6 @@
   <script src="mermaid.min.js"></script>
   <link rel="stylesheet" href="mermaid.css">
   <link rel="stylesheet" href="custom.css">
-  <script>mermaid.initialize({startOnLoad: true, cloneCssStyles: false});</script>
   <script>
     function create() {
       slideshow = remark.create({
@@ -18,9 +17,20 @@
         highlightStyle: 'github'
       });
 
-      slideshow.on('afterShowSlide', function () {
-        mermaid.init(undefined, '.mermaid')
-      })
+      mermaid.initialize({
+        startOnLoad: false,
+        cloneCssStyles: false
+      });
+      function initMermaid(s) {
+        var diagrams = document.querySelectorAll('.mermaid');
+        diagrams.forEach(function (diagram) {
+          if (diagram.offsetWidth > 0) {
+            mermaid.init(undefined, diagram);
+          }
+        })
+      }
+      slideshow.on('afterShowSlide', initMermaid);
+      initMermaid(slideshow.getSlides()[slideshow.getCurrentSlideIndex()]);
     }
   </script>
 </head>
