@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>{{title}}</title>
-  {{{style}}}
-  <script src="remark.min.js"></script>  
+  <script src="remark.min.js"></script>
+  <script src="mermaid.min.js"></script>
+  <link rel="stylesheet" href="mermaid.css">
+  <link rel="stylesheet" href="custom.css">
+  <script>mermaid.initialize({startOnLoad: true, cloneCssStyles: false});</script>
   <script>
     function create() {
-      return remark.create({
+      slideshow = remark.create({
         {{{source}}},
         ratio: '16:9',
         highlightLines: true,
         countIncrementalSlides: false,
         highlightStyle: 'github'
       });
+
+      slideshow.on('afterShowSlide', function () {
+        mermaid.init(undefined, '.mermaid')
+      })
     }
   </script>
 </head>
-<body onload="slideshow = create()">
+<body onload="create()">
 </body>
 </html>

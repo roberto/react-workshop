@@ -4,7 +4,8 @@
   "description": "React Workshop",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bs serve slides",
+    "update-mermaid": "cp node_modules/mermaid/dist/{mermaid.min.js,mermaid.css} template",
+    "start": "bs serve slides --skip-open --port 4100",
     "build": "bs export slides/*.md --no-inline --output dist",
     "deploy": "npm run build && gh-pages -d dist"
   },
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/roberto/react-workshop#readme",
   "dependencies": {
     "backslide": "^1.2.1",
-    "gh-pages": "^1.0.0"
+    "gh-pages": "^1.0.0",
+    "mermaid": "^7.0.3"
   }
 }
