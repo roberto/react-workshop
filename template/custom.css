@@ -16,6 +16,12 @@ p {
 }
 .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 
+img {
+  max-width: 80%;
+  display: block;
+  margin: auto;
+}
+
 /* mermaid */
 
 .mermaid svg {
@@ -24,6 +30,6 @@ p {
 }
 
 .mermaid {
-	font-size: 1.0em;
+  font-family: "trebuchet ms", verdana, arial;
 }
 

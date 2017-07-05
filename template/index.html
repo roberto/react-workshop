@@ -19,7 +19,10 @@
 
       mermaid.initialize({
         startOnLoad: false,
-        cloneCssStyles: false
+        cloneCssStyles: false,
+        flowchart:{
+          htmlLabels: false
+        }
       });
       function initMermaid(s) {
         var diagrams = document.querySelectorAll('.mermaid');
