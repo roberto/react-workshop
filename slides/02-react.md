@@ -25,6 +25,7 @@
 ## Concepts
 
 * Virtual DOM
+* HTML on JavaScript
 
 ---
 
@@ -88,5 +89,70 @@ graph TD
     style vD fill:red
     style rD fill:green
 </div>
+
+---
+
+### HTML on JavaScript: JSX
+
+```jsx
+const element = <h1>Hello, World!</h1>
+
+{{content}}
+```
+
+--
+
+const element2 = (
+  <div>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </div>
+)
+
+--
+
+```js
+const element = React.createElement("h1", null, "Hello, World!")
+
+const element2 = React.createElement("div", null,
+  React.createElement("h1", null, "Hello!"),
+  React.createElement("h2", null, "Good to see you here.")
+)
+```
+
+---
+
+### Server Side Rendering
+
+<div class="mermaid">
+sequenceDiagram
+    Browser->>Server: request
+    {{content}}
+</div>
+
+--
+    Server-->>Browser: "Empty" HTML
+    Server-->>Browser: JS
+
+---
+
+### Server Side Rendering
+
+```js
+const element = <h1>Hello World!</h1>
+
+{{content}}
+```
+
+--
+const html = ReactDOMServer.renderToString(element)
+
+--
+
+```js
+const app = <App />
+
+const html = ReactDOMServer.renderToString(app)
+```
 
 ---
