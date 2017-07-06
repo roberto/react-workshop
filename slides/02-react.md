@@ -368,23 +368,34 @@ class HorizontalSplit extends React.Component {
 ```js
 const Loading = <i class="loading"></i>
 
-// (...)
-
-render () {
-  return this.props.ready ? (...) : <Loading />
-}
+{{content}}
 ```
+
+--
+class Welcome extends React.Component {
+  render () {
+    return this.props.ready ? (...) : <Loading />
+  }
+}
+
 --
 
 ```js
 withLoading(Welcome)
+
+{{content}}
 ```
+--
+class Welcome extends React.Component {
+  render () {
+    return (...)
+  }
+}
 --
 
 ```js
 const withLoading = (LoadComponent) =>
-  (props) =>
-    props.ready ? <LoadComponent {...props} : <Loading />
+  (props) => props.ready ? <LoadComponent {...props} : <Loading />
 ```
 --
 
@@ -407,7 +418,75 @@ connect(mapStateToProps)(Welcome)
 ```js
 injectIntl(Welcome)
 ```
+
 ---
+
+### Patterns - Less Conditionals Hell
+
+```js
+buildEditor () {
+  return this.props.isVisible
+    ? <Editor />
+    : null
+}
+
+```
+
+--
+
+```js
+buildEditor () {
+  if(this.isEditing() && this.props.isVisible) {
+    return <Editor />
+  }
+
+  return null
+}
+
+```
+--
+
+```js
+buildEditor () {
+  return renderWhen(this.props.isVisible, () => <Editor />)
+}
+
+{{content}}
+```
+--
+const renderWhen(condition, renderComponent) =>
+  return condition ? renderComponent() : null
+
+---
+
+### Patterns - Less Conditionals Hell with Recompose
+
+```js
+const renderWhen = condition =>
+  branch(
+    condition,
+    renderNothing
+  )
+{{content}}
+```
+--
+
+buildEditor () =>
+  renderWhen(this.props.isVisible)(() => <Editor />)
+
+--
+```js
+buildEditor () => {
+  const editor = withProps({title})(Editor)
+  renderWhen(this.props.isVisible)(editor)
+}
+```
+--
+
+[package recompose, API](https://github.com/acdlite/recompose/blob/master/docs/API.md)
+
+---
+
 
 # References
 
