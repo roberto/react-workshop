@@ -58,6 +58,8 @@ Pick one (with prefix)
 --
 
 ```js
+import classNames from 'classnames'
+
 const toggleEditorClass = isEditing ? 'editing' : 'showing'
 
 const classes = {
@@ -71,14 +73,14 @@ const classes = {
 --
 
 ```js
+import classNames from 'classnames'
+
 const toggleEditorClass = isEditing ? 'editing' : 'showing'
 
 <div class={classNames('header', toggleEditorClass, {on: this.props.active})} />
 ```
 
 [package classnames](https://github.com/JedWatson/classnames)
-
-<!-- TODO conditions -->
 
 ---
 
@@ -190,11 +192,15 @@ const withLoading = (LoadComponent) =>
 ## High Order Components
 
 ```js
+import {connect} from 'react-redux'
+
 connect(mapStateToProps)(Welcome)
 ```
 --
 
 ```js
+import {injectIntl} from 'react-intl'
+
 injectIntl(Welcome)
 ```
 
@@ -241,6 +247,8 @@ const renderWhen(condition, renderComponent) =>
 ## Less Conditionals Hell with Recompose
 
 ```js
+import {branch, renderNothing} from 'recompose'
+
 const renderWhen = condition =>
   branch(
     condition,
@@ -255,6 +263,8 @@ buildEditor () =>
 
 --
 ```js
+import {withProps} from 'recompose'
+
 buildEditor () => {
   const editor = withProps({title})(Editor)
   renderWhen(this.props.isVisible)(editor)
