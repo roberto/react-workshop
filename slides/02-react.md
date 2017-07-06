@@ -6,16 +6,15 @@
 
 * Concepts
   * Virtual DOM
+  * HTML on JavaScript: JSX
+  * Server Side Rendering
 * Components
   * Simplest one
   * Composing them
   * Rendering it
   * Event
 * Features
-  * Virtual DOM
   * Componentization
-  * JSX
-  * Server-Side Rendering
 * State Management
   * State
   * Life cycle
@@ -122,42 +121,45 @@ const element2 = React.createElement("div", null,
 
 ---
 
-### Server Side Rendering
+### Server Side Rendering - Usual Rendering
 
 <div class="mermaid">
 sequenceDiagram
-    Browser->>Server: request
+    Browser->>Cache: request
     {{content}}
 </div>
 
 --
-    Server-->>Browser: "Empty" HTML
-    Server-->>Browser: app.js
+    Cache-->>Browser: "Empty" HTML
+    Cache-->>Browser: app.js
     {{content}}
 --
     Browser-->>Browser: initial state
     {{content}}
 --
-    Browser->>Server: AJAX [1]
-    Browser->>Server: AJAX [2]
+    Browser->>Server: AJAX[1]
+    Server-->>Browser: data[1]
+    Browser->>Server: AJAX[2]
+    Server-->>Browser: data[2]
 ---
 
 ### Server Side Rendering
 
 <div class="mermaid">
 sequenceDiagram
-    Browser->>Server: request
+    Browser->>Cache: request
     {{content}}
 </div>
 
 --
-    Server-->>Browser: HTML (initial + data)
+    Cache-->>Browser: HTML: initial + data[1]
     {{content}}
 --
-    Server-->>Browser: app.js
+    Cache-->>Browser: app.js
     {{content}}
 --
-    Browser->>Server: AJAX [2]
+    Browser->>Server: AJAX[2]
+    Server-->>Browser: data[2]
 ---
 
 ### Server Side Rendering
@@ -174,7 +176,8 @@ const html = ReactDOMServer.renderToString(element)
 --
 
 ```js
-const app = <App />
+const data1 = loadInformation()
+const app = <App {..data1} />
 
 const html = ReactDOMServer.renderToString(app)
 ```
