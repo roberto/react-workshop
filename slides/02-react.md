@@ -132,8 +132,32 @@ sequenceDiagram
 
 --
     Server-->>Browser: "Empty" HTML
-    Server-->>Browser: JS
+    Server-->>Browser: app.js
+    {{content}}
+--
+    Browser-->>Browser: initial state
+    {{content}}
+--
+    Browser->>Server: AJAX [1]
+    Browser->>Server: AJAX [2]
+---
 
+### Server Side Rendering
+
+<div class="mermaid">
+sequenceDiagram
+    Browser->>Server: request
+    {{content}}
+</div>
+
+--
+    Server-->>Browser: HTML (initial + data)
+    {{content}}
+--
+    Server-->>Browser: app.js
+    {{content}}
+--
+    Browser->>Server: AJAX [2]
 ---
 
 ### Server Side Rendering
