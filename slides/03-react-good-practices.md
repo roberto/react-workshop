@@ -60,25 +60,20 @@ Pick one (with prefix)
 ```js
 import classNames from 'classnames'
 
-const toggleEditorClass = isEditing ? 'editing' : 'showing'
-
 const classes = {
   on: this.props.active,
-  [toggleEditorClass]: true,
+  visible: true
 }
 
 <div class={classNames('header', classes)} />
 ```
-
 --
-
 ```js
-import classNames from 'classnames'
-
 const toggleEditorClass = isEditing ? 'editing' : 'showing'
 
-<div class={classNames('header', toggleEditorClass, {on: this.props.active})} />
+<div class={classNames('header', toggleEditorClass, classes)} />
 ```
+--
 
 [package classnames](https://github.com/JedWatson/classnames)
 
