@@ -13,7 +13,6 @@
 
 * Virtual DOM
 * HTML on JavaScript?
-* Server Side Rendering
 
 ---
 name: vdom
@@ -152,71 +151,6 @@ These objects are called "React elements"
 --
 
 * [Introducing JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
-
----
-
-### Server Side Rendering - Usual Rendering
-
-<div class="mermaid">
-sequenceDiagram
-    Browser->>Cache: request
-    {{content}}
-</div>
-
---
-    Cache-->>Browser: "Empty" HTML
-    Cache-->>Browser: app.js
-    {{content}}
---
-    Browser-->>Browser: initial state
-    {{content}}
---
-    Browser->>Server: AJAX[1]
-    Server-->>Browser: data[1]
-    Browser->>Server: AJAX[2]
-    Server-->>Browser: data[2]
----
-
-### Server Side Rendering
-
-<div class="mermaid">
-sequenceDiagram
-    Browser->>Cache: request
-    {{content}}
-</div>
-
---
-    Cache-->>Browser: HTML: initial + data[1]
-    {{content}}
---
-    Cache-->>Browser: app.js
-    {{content}}
---
-    Browser->>Server: AJAX[2]
-    Server-->>Browser: data[2]
----
-
-### Server Side Rendering
-
-```js
-const element = <h1>Hello World!</h1>
-
-{{content}}
-```
-
---
-const html = ReactDOMServer.renderToString(element)
-
---
-
-```js
-const data1 = loadInformation()
-const app = <App {..data1} />
-
-const html = ReactDOMServer.renderToString(app)
-```
-
-[ReactDOMServer](https://facebook.github.io/react/docs/react-dom-server.html)
 
 ---
 
