@@ -6,22 +6,25 @@
 
 * Concepts
 * Components
-* Patterns
 
 ---
 
 ## Concepts
 
 * Virtual DOM
-* HTML on JavaScript
+* HTML on JavaScript?
 * Server Side Rendering
 
 ---
+name: vdom
 
 ### Virtual DOM
 
+---
+template: vdom
+
 ```js
-const vdom = div(                         // virtual DOM is created and savend on memory
+const vdom = div(                         // virtual DOM is created and saved on memory
   h1("hello world")
 )
 
@@ -29,7 +32,7 @@ const vdom = div(                         // virtual DOM is created and savend o
 ```
 
 --
-render(vdom)                              // virtual DOM is rendered on real DOM
+render(vdom, '#app')                      // virtual DOM is rendered on real DOM
 
 {{content}}
 
@@ -49,11 +52,10 @@ const diff = vdomDiff(vdom, updatedVdom)  // Generate diff comparing old vdom wi
 
 --
 
-render(diff)                              // Diff is applied to the real DOM, ensuring the minimal changes possible
+patch(diff, '#app')                       // Diff is applied to the real DOM, ensuring the minimal changes possible
 
 ---
-
-### Virtual DOM
+template: vdom
 
 <div class="mermaid">
 graph TD
@@ -70,9 +72,6 @@ graph TD
 </div>
 
 --
-{{content}}
-style vD fill:red
---
 subgraph Real DOM Tree
   rA((A))-->rB((B))
   rA-->rC((C))
@@ -84,7 +83,30 @@ subgraph Real DOM Tree
 end
 {{content}}
 --
+{{content}}
+style vD fill:red
+--
 style rD fill:green
+---
+template: vdom
+
+--
+
+* Is updating Real DOM slow?
+
+???
+Nope, but the whole process also needs to re-calculate CSS, layout and repaint!
+--
+
+* Will Virtual DOM use more memory?
+
+???
+Batch updates
+
+--
+
+* [The Secrets of React's Virtual DOM](https://youtu.be/-DX3vJiqxm4?t=1166)
+
 ---
 
 ### JSX: Syntax Extension
