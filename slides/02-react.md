@@ -6,6 +6,10 @@
 
 * Concepts
 * Components
+* Properties
+* State
+* Lifecycle
+* Events
 
 ---
 
@@ -153,48 +157,139 @@ These objects are called "React elements"
 * [Introducing JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
 
 ---
-
 ## Components
+--
+
+* Creating
+* Rendering
+* Testing
 
 ---
-
-### Creating a component
-
-#### Function
+### Creating as functions
 
 ```js
-const Welcome = (props) => {
-  return <h1>Hello, {props.name}</h1>
+function Card (props) {
+  return (
+    <div className="card">
+      <h1>
+        {props.name}
+      </h1>
+    </div>
+  );
 }
-
 ```
+--
+
+```js
+const Card = (props) =>
+  <div className="card">
+    <h1>
+      {props.name}
+    </h1>
+  </div>;
+```
+--
+```js
+import React from 'react';
+```
+
+---
+### Creating as classes
+
+```js
+class Card extends React.Component {
+{{content}} render () {
+    return (
+      <div className="card">
+        <h1>
+          {this.props.name}
+        </h1>
+      </div>
+    );
+  }
+}
+```
+--
+*
+---
+
+### Rendering
+
+```js
+import React from 'react';
+import { render } from 'react-dom';
+import Card from './Card';
+
+const App = () => <Card name="Chris" />
+
+*render(<App />, document.getElementById('root'));
+```
+---
+
+## Properties
+
+* props -> output
+* Object
+* Read only
 
 --
 
-#### Class
+```js
+const Card = (props) => // ... props.name
+```
+--
+```js
+<Card name="Chris"{{content}} />
+```
+--
+ visible editing={false} hobbies={['surfing', 'netflix']}
+--
+```js
+const cardProps = {
+  name: "Chris",
+  visible: true,
+  editing: false,
+  hobbies: ['surfing', 'netflix']
+}
 
+<Card {...cardProps} />
+```
+--
+```jsx
+<Card name="Chris">
+  <Avatar "image.png" />
+</Card>
+
+// props.children
+```
+---
+
+## Properties
 
 ```js
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {props.name}</h1>
+class Card extends React.Component {
+  render () {
+    this.props.name
   }
 }
 
+{{content}}
 ```
+--
+Card.defaultProps = {
+  name: 'Taylor'
+}
+--
 
----
-
-### Rendering a component
+Typechecking
 
 ```js
-const element = <Welcome name="Sarah" />
+import PropTypes from 'prop-types';
 
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-)
+Card.propTypes = {
+  name: PropTypes.string.required
+}
 ```
-
----
-
+* Only checked on development
+* [Validators](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#proptypes)
+* Alternatives: [Flow](https://flow.org/) or [TypeScript](https://www.typescriptlang.org/)
