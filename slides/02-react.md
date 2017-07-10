@@ -112,30 +112,46 @@ Batch updates
 ### JSX: Syntax Extension
 
 ```jsx
-const element = <h1>Hello, World!</h1>
-
-{{content}}
-```
-
---
-
-const element2 = (
+const element = (
   <div>
     <h1>Hello!</h1>
-    <h2>Good to see you here.</h2>
+    <h2 className="welcome">Good to see you here.</h2>
   </div>
 )
+```
+???
+Babel compiles JSX down to `React.createElement()` calls.
 
 --
 
 ```js
-const element = React.createElement("h1", null, "Hello, World!")
-
-const element2 = React.createElement("div", null,
+const element = React.createElement("div", null,
   React.createElement("h1", null, "Hello!"),
-  React.createElement("h2", null, "Good to see you here.")
+  React.createElement("h2", {className: "welcome"}, "Good to see you here.")
 )
 ```
+???
+`React.createElement()` performs a few checks and creates an object.
+
+--
+
+```js
+const element = {
+  type: "div",
+  props: {
+    children: [
+      { type: "h1", props: { children: "Hello!" } },
+      { type: "h2", props: { className: "welcome", children: "Good to see you here." } }
+    ]
+  }
+)
+```
+???
+These objects are called "React elements"
+
+--
+
+* [Introducing JSX](https://facebook.github.io/react/docs/introducing-jsx.html)
 
 ---
 
