@@ -320,19 +320,19 @@ class App extends Component {
 ---
 ## Events
 
-```js
+```html
 class UserInput extends Component {
   handleChange = event => {
     if (event.key === 'Enter') {
       this.props.onUpdate(event.target.value);
     }
   };
-
   render() {
     return (
       <div>
         <label>Username:</label>
         <input type="text" onKeyUp={this.handleChange} />
+        <Card name="Chris" />
       </div>
     );
   }
@@ -342,19 +342,45 @@ class UserInput extends Component {
 ```html
 {{content}}  updateUser = (user) => console.log(event.target.value)
 
-  render() {
-    return (
-      <div>
-        <UserInput onUpdate={this.updateUser} />
-{{content}}        <Card name={?} />
-      </div>
-    );
-  }
+  <div>
+    <UserInput onUpdate={this.updateUser} />
+{{content}}    <Card name={?} />
+  </div>
 ```
 --
 *
 ---
 
+## State
+
+```js
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: props.user,
+    };
+  }
+{{content}}
+```
+--
+
+  changeUser = user => {
+    this.setState({ user });
+  };
+
+{{content}}
+--
+  render() {
+    return (
+      <div>
+        <UserInput onChange={this.changeUser} />
+        <Card name={this.state.user} />
+      </div>
+    );
+  }
+}
+---
 ## Resources
 
 * Editor
