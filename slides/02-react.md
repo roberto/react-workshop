@@ -159,6 +159,8 @@ These objects are called "React elements"
 ---
 ## Components
 
+[Code Example: Creating and Rendering](https://codesandbox.io/s/2kEo06BMK)
+
 ---
 ### Creating as functions
 
@@ -292,6 +294,8 @@ Card.propTypes = {
 ---
 ## Events
 
+[Code Example: Handling Events](https://codesandbox.io/s/voQjJJ7mr)
+
 ```html
 class App extends Component {
 {{content}}  handleChange (event) {
@@ -348,6 +352,8 @@ class UserInput extends Component {
 
 ## State
 
+[Code Example: State](https://codesandbox.io/s/lY2VnDxBj)
+
 ```js
 class App extends Component {
   constructor(props) {
@@ -378,6 +384,10 @@ class App extends Component {
 ---
 ## Lifecycle
 
+[Code Example: Lifecycle](https://codesandbox.io/s/Kr35G91QG)
+
+--
+
 <div class="mermaid">
 graph TD
 {{content}}
@@ -391,6 +401,7 @@ graph TD
     subgraph Updating
       uA(componentWillReceiveProps)-->uB(shouldComponentUpdate)
       uB-->uC(componentWillUpdate)
+      uC-->uD(componentDidUpdate)
     end
     {{content}}
 --
@@ -418,6 +429,13 @@ fetchUser(username) {
   });
 }
 ```
+--
+
+* [React Lifecycle Methods- how and when to use them](https://engineering.musefind.com/react-lifecycle-methods-how-and-when-to-use-them-2111a1b692b1)
+* [React Docs: The Component Lifecycle](https://facebook.github.io/react/docs/react-component.html#the-component-lifecycle)
+
+
+
 ---
 ## Resources
 
