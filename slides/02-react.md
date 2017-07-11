@@ -7,9 +7,9 @@
 * Concepts
 * Components
 * Properties
+* Events
 * State
 * Lifecycle
-* Events
 
 ---
 
@@ -287,13 +287,72 @@ Typechecking
 import PropTypes from 'prop-types';
 
 Card.propTypes = {
-  name: PropTypes.string.required
+  name: PropTypes.string.isRequired
 }
 ```
 * Only checked on development
 * [Validators](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#proptypes)
 * Alternatives: [Flow](https://flow.org/) or [TypeScript](https://www.typescriptlang.org/)
 
+---
+## Events
+
+```html
+class App extends Component {
+{{content}}  handleChange (event) {
+    console.log(event.target.value)
+  }
+
+  render () {
+    <div>
+      <label>Username:</label>
+{{content}}      <input type="text" onChange={this.handleChange} />
+      <Card name="Chris" />
+    </div>
+  }
+}
+```
+--
+*
+--
+
+* [Supported Events](https://facebook.github.io/react/docs/events.html#supported-events)
+---
+## Events
+
+```js
+class UserInput extends Component {
+  handleChange = event => {
+    if (event.key === 'Enter') {
+      this.props.onUpdate(event.target.value);
+    }
+  };
+
+  render() {
+    return (
+      <div>
+        <label>Username:</label>
+        <input type="text" onKeyUp={this.handleChange} />
+      </div>
+    );
+  }
+}
+```
+--
+```html
+{{content}}  updateUser = (user) => console.log(event.target.value)
+
+  render() {
+    return (
+      <div>
+        <UserInput onUpdate={this.updateUser} />
+{{content}}        <Card name={?} />
+      </div>
+    );
+  }
+```
+--
+*
 ---
 
 ## Resources
