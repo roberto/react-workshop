@@ -376,6 +376,49 @@ class App extends Component {
   }
 }
 ---
+## Lifecycle
+
+<div class="mermaid">
+graph TD
+{{content}}
+    subgraph Mounting
+      A(constructor)-->B(componentWillMount)
+      B-->C(render)
+      C-->D(componentDidMount)
+    end
+</div>
+--
+    subgraph Updating
+      uA(componentWillReceiveProps)-->uB(shouldComponentUpdate)
+      uB-->uC(componentWillUpdate)
+    end
+    {{content}}
+--
+    subgraph Unmount
+      eA(componentWillUnmount)
+    end
+---
+
+## Lifecycle
+
+```js
+componentWillReceiveProps(newProps) {
+  if (this.props.name !== newProps.name) {
+    this.fetchUser(newProps.name);
+  }
+}
+```
+--
+```js
+fetchUser(username) {
+  axios.get(`https://api.github.com/users/${username}`).then(response => {
+*   this.setState({
+      data: this.formatData(response.data),
+    });
+  });
+}
+```
+---
 ## Resources
 
 * Editor
