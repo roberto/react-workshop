@@ -293,3 +293,17 @@ Card.propTypes = {
 * Only checked on development
 * [Validators](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#proptypes)
 * Alternatives: [Flow](https://flow.org/) or [TypeScript](https://www.typescriptlang.org/)
+
+---
+
+## Resources
+
+* Editor
+  * https://codesandbox.io/
+* Data
+  * https://developer.github.com/v3/users/
+  * http://avatars.adorable.io/
+  * http://xoart.link/
+  * http://lorempixel.com/
+* Style
+  * https://github.com/lepture/github-cards
