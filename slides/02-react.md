@@ -108,7 +108,7 @@ Batch updates
 
 --
 
-* [The Secrets of React's Virtual DOM](https://youtu.be/-DX3vJiqxm4?t=1166)
+[The Secrets of React's Virtual DOM](https://youtu.be/-DX3vJiqxm4?t=1166)
 
 ---
 
@@ -158,11 +158,6 @@ These objects are called "React elements"
 
 ---
 ## Components
---
-
-* Creating
-* Rendering
-* Testing
 
 ---
 ### Creating as functions
@@ -392,3 +387,8 @@ class App extends Component {
   * http://lorempixel.com/
 * Style
   * https://github.com/lepture/github-cards
+* Slides
+  * Remark
+  * Backslide
+  * gh-page
+  * mermaid
