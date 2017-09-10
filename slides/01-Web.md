@@ -101,21 +101,31 @@ Cache strategy, returning cached page as a static one
 sequenceDiagram
     Browser->>Server: GET /index;
     Server-->>Browser: HTML;
-    Browser->>Server: XML HTTP Request GET /movie/123;
+    Browser->>Server: "Ajax" GET /movie/123;
     Server->>Database: ... where ID=123;
-    Database-->>Server: Movie data;
-    Server->>Browser: JSON;
+    Database-->>Server: movie data;
+    Server-->>Browser: JSON;
 </div>
+
+???
+ex: starting the page with the static part as HTML and using Ajax to get the
+dynamic one
 
 ---
 
 ### SPA - Single Page Application
 
-* using Ajax a fuuu
+* user experience: one page acting as multiple pages
+* using Ajax afu
+* Example:
+  * Facebook
+  * GMail
 
 ---
 
 ### Progressive Web App
+
+* https://developers.google.com/web/progressive-web-apps/
 
 ---
 
@@ -126,3 +136,4 @@ sequenceDiagram
 * [A Short History of JavaScript](https://www.w3.org/community/webed/wiki/A_Short_History_of_JavaScript)
 * [A Brief History of JavaScript](https://auth0.com/blog/a-brief-history-of-javascript/)
 * [Ajax: A New Approach to Web Applications](http://adaptivepath.org/ideas/ajax-new-approach-web-applications/)
+* [Progressive Web Apps: A new way to deliver amazing user experiences on the web](https://developers.google.com/web/progressive-web-apps/)
