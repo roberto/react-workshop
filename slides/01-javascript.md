@@ -386,3 +386,6 @@ letsParty().then((response) => {
 * [The Modern JavaScript Tutorial](https://javascript.info/)
 * [Weak And Strong Typing](http://wiki.c2.com/?WeakAndStrongTyping)
 * [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
+* [ES6 Features](https://github.com/lukehoban/es6features)
+* [Modern JavaScript
+  cheatsheet](https://github.com/mbeaudru/modern-js-cheatsheet)
