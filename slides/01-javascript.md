@@ -74,9 +74,8 @@ Weakly typed: implicit type conversions
 * Runtimes
   * Browsers
   * [Node.js](https://nodejs.org/en/): V8 + event loop + C
-    * [Ryan Dahl: Node JS](https://www.youtube.com/watch?v=EeYvFl7li9E)
+      * [Ryan Dahl: Node JS](https://www.youtube.com/watch?v=EeYvFl7li9E)
 --
-
 * Package Manager
   * [npm](https://www.npmjs.com/)
 --
@@ -93,11 +92,13 @@ Weakly typed: implicit type conversions
   * [Webpack](https://webpack.js.org/)
 ---
 
-## Syntax
+## Language
 
 * Declaring constants/variables
+* Data types
 * Declaring functions
-* Using Object
+* Passing functions as argument
+* Using Object and Arrays
 * Handling Promises
 
 ---
@@ -159,18 +160,20 @@ console.log(typeof a) // "boolean"
 ## Arrays
 
 ```js
-const animals = ['Giraffe', 'Cat']
+const animals = ['Giraffe', 'Cat', 22]
 ```
 
 --
 
 ```js
-console.log(animails[1]) // 'Cat'
+console.log(animals[1]) // 'Cat'
 ```
 
 --
 
 ```js
+Array.isArray('blah') // false
+
 animals.push('Dog')
 ```
 
@@ -187,6 +190,27 @@ const logins = {
 }
 ```
 
+--
+
+```js
+logins.test // 'test123'
+
+logins['admin']
+
+logins.user = 'changeme'
+```
+
+--
+
+```js
+Object.keys(logins) // ['test', 'admin', 'user']
+
+logins.hasOwnProperty('root') // false
+```
+
+[MDN -
+Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
 ---
 
 ## Declaring functions
@@ -197,14 +221,39 @@ function sum (a, b) {
 }
 ```
 --
+
 ```js
 const sum = (a, b) => {
   return a + b
 }
 ```
 --
+
 ```js
 const sum = (a, b) => a + b
+```
+
+---
+
+## Functions as arguments
+
+```js
+const print = (operation, a, b) => {
+  const result = operation(a, b)
+  console.log(result)
+}
+```
+
+--
+
+```js
+print(sum, 1, 2)
+```
+
+--
+
+```js
+print((a, b) => a + b, 1, 2)
 ```
 
 ---
@@ -213,3 +262,4 @@ const sum = (a, b) => a + b
 
 * [The Modern JavaScript Tutorial](https://javascript.info/)
 * [Weak And Strong Typing](http://wiki.c2.com/?WeakAndStrongTyping)
+* [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
