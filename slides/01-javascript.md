@@ -103,27 +103,24 @@ Weakly typed: implicit type conversions
 
 ---
 
-## Exercises
+## Playground
 
-* [Example 01](https://codepen.io/r_soares/pen/NvQJPL?editors=1010)
-
-
-### Resources
-
-* [Document API](https://developer.mozilla.org/en-US/docs/Web/API/Document)
+* [Codepen](https://codepen.io/r_soares/pen/jGqGQg?editors=0012)
+* [JSFiddle](https://jsfiddle.net/)
+* Console in your browser
 
 ---
 
 ## Code Structure
 
 ```js
-console.log('Hello'); console.log('World');
+alert('Hello'); alert('World');
 // Hello World
 ```
 
 ```js
-console.log('Hello')
-console.log('World')
+alert('Hello')
+alert('World')
 /* Hello World */
 ```
 
@@ -152,7 +149,7 @@ a = 2
 a = '2'
 a = true
 
-console.log(typeof a) // "boolean"
+alert(typeof a) // "boolean"
 ```
 
 ---
@@ -166,7 +163,7 @@ const animals = ['Giraffe', 'Cat', 22]
 --
 
 ```js
-console.log(animals[1]) // 'Cat'
+alert(animals[1]) // 'Cat'
 ```
 
 --
@@ -213,6 +210,44 @@ Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global
 
 ---
 
+## Conditionals
+
+### if
+
+```js
+let year = prompt('In which year was ECMAScript-2015 specification published?', '');
+
+if (year < 2015) {
+  alert( 'Too early...' )
+} else if (year > 2015) {
+  alert( 'Too late' )
+} else {
+  alert( 'Exactly!' )
+}
+```
+
+--
+
+*0*, an empty string *""*, *null*, *undefined* and *NaN* become *false* (falsy
+values)
+
+---
+
+### Ternary operator
+
+```js
+let accessAllowed = (age > 18) ? 'content' : 'nope'
+```
+--
+
+```js
+let accessAllowed = age > 18
+  ? 'content'
+  : 'nope'
+```
+
+---
+
 ## Declaring functions
 
 ```js
@@ -240,7 +275,7 @@ const sum = (a, b) => a + b
 ```js
 const print = (operation, a, b) => {
   const result = operation(a, b)
-  console.log(result)
+  alert(result)
 }
 ```
 
@@ -258,7 +293,95 @@ print((a, b) => a + b, 1, 2)
 
 ---
 
-# Resources
+## Functions as arguments - forEach
+
+```js
+[1,2,3,4].forEach(alert)
+```
+--
+
+```js
+[1,2,3,4].forEach((a) => {
+  alert(a + 2)
+})
+```
+
+---
+
+## Callbacks
+
+--
+
+```js
+const alertTest = alert('test')
+
+setTimeout(alertTest, 100)
+```
+
+--
+
+```js
+const button = document.getElementById('load-button')
+
+const hello = function (event) {
+  alert('clicked')
+}
+
+button.addEventListener("click", hello)
+```
+
+---
+
+## Promises
+
+```js
+new Promise((resolve, reject) => {
+})
+```
+--
+
+```js
+const letsParty = () => {
+  return new Promise((resolve, reject) => {
+    Date.now().getDay() !== 6
+      ? reject()
+      : setTimeout(resolve, 100)
+  }
+})
+```
+--
+```js
+letsParty().then(() => {
+  // ...
+})
+```
+--
+```js
+letsParty().then((response) => {
+  // ...
+}).catch((error) => {
+  // ...
+})
+```
+---
+
+## For more
+
+* [classes](https://javascript.info/class)
+* [scope](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures), bind
+* [promises](https://javascript.info/promise-basics)
+
+
+* [prototype](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes)
+* [var](https://javascript.info/var)
+* [this](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes)
+* [for, while, do/while](https://javascript.info/while-for)
+* [switch](https://javascript.info/switch)
+* [async/await](https://javascript.info/async-await)
+
+---
+
+## Resources
 
 * [The Modern JavaScript Tutorial](https://javascript.info/)
 * [Weak And Strong Typing](http://wiki.c2.com/?WeakAndStrongTyping)
